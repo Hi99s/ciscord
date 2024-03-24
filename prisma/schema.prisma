@@ -35,7 +35,7 @@ model Server {
     id String @id @default(uuid())
     name String
     imageUrl String @db.String
-    inviteCode String @db.String // 邀请码
+    inviteCode String @unique // 邀请码
 
     profileId String
     profile Profile @relation(fields: [profileId], references: [id],onDelete: Cascade) // 外键

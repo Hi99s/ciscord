@@ -21,7 +21,7 @@ export const InviteModal = () => {
     const [copied, setCopied] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     // 拿到数据库中的邀请码
-    const inviteUrl = `${orign}/${server?.inviteCode}`;
+    const inviteUrl = `${orign}/invite/${server?.inviteCode}`;
 
     const onCopy = () => {
         navigator.clipboard.writeText(inviteUrl);

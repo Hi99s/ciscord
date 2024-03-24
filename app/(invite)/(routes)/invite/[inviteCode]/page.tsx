@@ -35,24 +35,31 @@ const InviteCodePage = async ({
         }
     });
     if(existingServer) {
-        return redirect(`/server/${existingServer.id}`);
+        return redirect(`/servers/${existingServer.id}`);
     };
 
-    // const server = await db.server.update({
-    //     where:{
-    //         inviteCode: params.inviteCode
-    //     },
-    //     data:{
+    // 更新服务器的邀请码
+    const server = await db.server.update({
+        where:{
+            inviteCode: params.inviteCode
+        },
+        data:{
+            members:{
+                create:[
+                   {
+                    profileId: profile.id
+                   } 
+                ]
+            }
+        }
+    });
 
-    //     }
-    // })
+    if(server) {
+        return redirect(`/servers/${server.id}`);
+    }
 
 
-    return ( 
-        <div>
-            Hello Invite!
-        </div>
-     );
+    return null;
 }
  
 export default InviteCodePage;
