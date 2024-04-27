@@ -25,7 +25,7 @@ export  async function POST(req: Request) {
             name,
             imageUrl,
             inviteCode: uuidv4(), // 生成一个随机的邀请码
-            // 创建频道和成员
+            // 创建初始频道和成员
             channels:{
                 create: [{name: "general", profileId: profile.id}]
             },
