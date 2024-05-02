@@ -2,12 +2,16 @@ import { ChannelType, MemberRole } from "@prisma/client";
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
 import { redirect } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 
 import { ServerHeader } from "./server-header";
 import { ServerSearch } from "./server-search";
+import { ServerSection } from "./server-section";
+import { ServerChannel } from "./server-channel";
+import { ServerMember } from "./server-member";
 
 interface ServerSideBarProps {
     serverId: string;
@@ -111,7 +115,73 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     }
                 ]}/>
             </div>
-            
+            <Separator className="bg-zinc-200 dark:bg-zinc-700 rounded-md my-2" />
+            {/* 会转化为布尔值 */}
+            {!!textChannels?.length && (
+                <div className="mb-2">
+                    <ServerSection 
+                    sectionType="channels"
+                    channelType={ChannelType.TEXT}
+                    role={role}
+                    label="文本频道"
+                    />
+                    {textChannels.map((channel) => (
+                        <ServerChannel 
+                         key={channel.id}
+                         role={role}
+                         server={server}
+                         channel={channel}/>
+                    ))}
+                </div>
+            )}
+            {!!audioChannels?.length && (
+                <div className="mb-2">
+                    <ServerSection 
+                    sectionType="channels"
+                    channelType={ChannelType.AUDIO}
+                    role={role}
+                    label="语音频道"
+                    />
+                    {audioChannels.map((channel) => (
+                        <ServerChannel 
+                         key={channel.id}
+                         role={role}
+                         server={server}
+                         channel={channel}/>
+                    ))}
+                </div>
+            )}
+            {!!videoChannels?.length && (
+                <div className="mb-2">
+                    <ServerSection 
+                    sectionType="channels"
+                    channelType={ChannelType.VIDEO}
+                    role={role}
+                    label="视频频道"
+                    />
+                    {videoChannels.map((channel) => (
+                        <ServerChannel 
+                         key={channel.id}
+                         role={role}
+                         server={server}
+                         channel={channel}/>
+                    ))}
+                </div>
+            )}
+            {!!members?.length && (
+                <div className="mb-2">
+                    <ServerSection 
+                    sectionType="members"
+                    role={role}
+                    label="成员"
+                    server={server}
+                    />
+                    {members.map((member) => (
+                        <ServerMember 
+                        key={member.id}/>
+                    ))}
+                </div>
+            )}
         </ScrollArea>
             </div>);
 };

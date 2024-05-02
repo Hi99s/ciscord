@@ -50,8 +50,6 @@ export const ServerSearch =  ({
 
     const onClick = ({id,type}:{id:String, type: "channel" | "member"}) => {
         setOpen(false);
-        console.log(type);
-        debugger;
         if( type === "member") {
             return router.push(`/servers/${params?.serverId}/conversations/${id}`);
         }
