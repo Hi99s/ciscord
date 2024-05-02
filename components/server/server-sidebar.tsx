@@ -20,7 +20,7 @@ const iconMap = {
 };
 
 const roleIconMap = {
-    [MemberRole.ADMIN]: <ShieldAlert className="mr-2 h-4 w-4 text-indigo-500"/>,
+    [MemberRole.ADMIN]: <ShieldAlert className="mr-2 h-4 w-4 text-rose-500"/>,
     [MemberRole.MODERATOR]: <ShieldCheck className="mr-2 h-4 w-4 text-indigo-500"/>,
     [MemberRole.GUEST]: null
 };
@@ -102,7 +102,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     },
                     {
                         label: "Members",
-                        type: "members",
+                        type: "member",
                         data: members?.map((member) => ({
                             id: member.id,
                             name: member.profile.name,
@@ -111,6 +111,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     }
                 ]}/>
             </div>
+            
         </ScrollArea>
             </div>);
 };
