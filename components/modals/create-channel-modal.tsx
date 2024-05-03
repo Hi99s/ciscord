@@ -33,6 +33,7 @@ import {
     SelectContent,
     SelectValue
 } from "@/components/ui/select"
+import { useEffect } from "react";
 
 // 频道类型对应字典
 const ChannelTypeDict = {
@@ -56,11 +57,12 @@ const formSchema = z.object({
 });
 
 export const CreateChannelModal = () => {
-    const {isOpen, onClose,type} = useModal(); 
+    const {isOpen, onClose,type,data} = useModal(); 
     const router = useRouter();
     const params = useParams();
 
     const isModalOpen = isOpen && type === 'createChannel';
+    const { channelType } = data;
 
 
     // 为什么form定义要在useEffect之前？ 
@@ -68,9 +70,18 @@ export const CreateChannelModal = () => {
         resolver: zodResolver(formSchema), // 使用zod来验证表单
         defaultValues: {
             name: '',
-            type: undefined, // 默认值为undefined
+            type:  channelType || undefined, // 默认值为undefined
         }
     });
+
+    useEffect(() => {
+        if(channelType){
+            form.setValue('type',channelType);
+        }
+        else{
+            form.setValue('type',undefined);
+        }
+    },[channelType,form]);
 
     const isLoading = form.formState.isSubmitting;
     const onSubmit = async (values: z.infer<typeof formSchema>) =>{

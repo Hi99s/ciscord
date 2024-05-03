@@ -125,6 +125,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     role={role}
                     label="文本频道"
                     />
+                    <div className="space-y-[2px]">
                     {textChannels.map((channel) => (
                         <ServerChannel 
                          key={channel.id}
@@ -132,6 +133,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                          server={server}
                          channel={channel}/>
                     ))}
+                    </div>
                 </div>
             )}
             {!!audioChannels?.length && (
@@ -142,6 +144,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     role={role}
                     label="语音频道"
                     />
+                    <div className="space-y-[2px]">
                     {audioChannels.map((channel) => (
                         <ServerChannel 
                          key={channel.id}
@@ -149,6 +152,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                          server={server}
                          channel={channel}/>
                     ))}
+                    </div>
                 </div>
             )}
             {!!videoChannels?.length && (
@@ -159,6 +163,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     role={role}
                     label="视频频道"
                     />
+                    <div className="space-y-[2px]">
                     {videoChannels.map((channel) => (
                         <ServerChannel 
                          key={channel.id}
@@ -166,6 +171,7 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                          server={server}
                          channel={channel}/>
                     ))}
+                    </div>
                 </div>
             )}
             {!!members?.length && (
@@ -176,10 +182,15 @@ export const ServerSidebar = async ({ serverId }: ServerSideBarProps) => {
                     label="成员"
                     server={server}
                     />
+                    <div className="space-y-[2px]">
                     {members.map((member) => (
                         <ServerMember 
-                        key={member.id}/>
+                        key={member.id}
+                        member={member}
+                        server={server}
+                        />
                     ))}
+                    </div>
                 </div>
             )}
         </ScrollArea>
