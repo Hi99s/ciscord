@@ -43,7 +43,12 @@ export const FileUpload = ({
         }}
         onUploadError = {(erro:Error) =>{
             console.log(erro);
-            
-        }}/>
+        }}
+        content = {
+           {
+            label: "点击选择文件或拖拽到虚线框内",
+           }
+        }
+        />
     );
 };
