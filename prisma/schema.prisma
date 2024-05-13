@@ -27,7 +27,7 @@ model Profile {
     channels Channel[]
 
     createdAt DateTime @default(now())
-    updateAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt
 }
 
 // 服务器
@@ -44,7 +44,7 @@ model Server {
     channels Channel[]
 
     createdAt DateTime @default(now())
-    updateAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt
 
     @@index([profileId]) // 为了加速查询 添加索引
 }
@@ -73,7 +73,7 @@ model Member {
     conversationsReceived Conversation[] @relation("MemberTwo")
 
     createdAt DateTime @default(now())
-    updateAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt
 
     @@index([profileId])
     @@index([serverId])
@@ -101,7 +101,7 @@ model Channel {
     messages Message[]
 
     createdAt DateTime @default(now())
-    updateAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt
 
     @@index([profileId])
     @@index([serverId])
@@ -122,7 +122,7 @@ model Message {
     deleted Boolean @default(false)
 
     createdAt DateTime @default(now())
-    updateAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt
 
     @@index([channelId])
     @@index([memberId])
@@ -159,7 +159,7 @@ model DirectMessage {
     deleted Boolean @default(false)
 
     createdAt DateTime @default(now())
-    updateAt DateTime @updatedAt
+    updatedAt DateTime @updatedAt
 
     @@index([memberId])
     @@index([conversationId])
