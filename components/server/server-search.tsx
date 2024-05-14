@@ -8,7 +8,7 @@ import { CommandEmpty } from "cmdk";
 
 interface ServerSearchProps {
    data:{
-    label: string;
+    label: "Text Channels" | "Voice Channels" | "Video Channels" | "Members";
     type: "channel" | "member";
     data: {
         icon: React.ReactNode;
@@ -81,7 +81,7 @@ return (
                 <CommandEmpty>
                     暂无搜索结果
                 </CommandEmpty>
-                {data.map(({label,type,data}: {label: 'Text Channels' | 'Voice Channels' | 'Video Channels' | 'Members', type: any, data: any[]}) => {
+                {data.map(({label,type,data}) => {
                     if(!data?.length) return null;
 
                     return(
