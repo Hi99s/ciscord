@@ -40,6 +40,18 @@ const roleIconMap = {
     ADMIN: <ShieldAlert className='h-4 w-4 ml-2 text-rose-500' />,
 };
 
+const memberRoleMap = {
+    Admin: "管理员",
+    Moderator: "主持人",
+    Guest: "访客",
+}
+
+const roleLabelMap = {
+    ADMIN: "管理员",
+    MODERATOR: "主持人",
+    GUEST: "游客",
+}
+
 const formSchema = z.object({
     content: z.string().min(1),
 });
@@ -136,7 +148,7 @@ export const ChatItem = ({
                             <p onClick={onMemberClick} className='font-semibold text-sm hover:underline cursor-pointer'>
                                 {member.profile.name}
                             </p>
-                            <ActionTooltip label={member.role}>{roleIconMap[member.role]}</ActionTooltip>
+                            <ActionTooltip label={roleLabelMap[member.role]}>{roleIconMap[member.role]}</ActionTooltip>
                         </div>
                         <span className='text-xs text-zinc-500 dark:text-zinc-400'>{timestamp}</span>
                     </div>

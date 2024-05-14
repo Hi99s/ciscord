@@ -96,7 +96,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponseS
                 },
                 data: {
                     fileUrl: null,
-                    content: "这条消息已被删除.",
+                    content: "这条消息已被删除。",
                     deleted: true,
                 },
                 include: {
