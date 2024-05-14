@@ -81,7 +81,7 @@ return (
                 <CommandEmpty>
                     暂无搜索结果
                 </CommandEmpty>
-                {data.map(({label,type,data}) => {
+                {data.map(({label,type,data}: {label:any, type: any, data: any[]}) => {
                     if(!data?.length) return null;
 
                     return(
