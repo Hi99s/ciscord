@@ -73,7 +73,7 @@ export async function POST(req: Request) {
             }
          })
         }
-        return new NextResponse.json(updatedProfile)
+        return NextResponse.json(updatedProfile)
     } catch (error) {
         return new NextResponse("Internal Error", { status: 500 });
     }
