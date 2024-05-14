@@ -72,9 +72,11 @@ export async function POST(req: Request) {
                 email:emailAddress
             }
          })
+         return NextResponse.json(updatedProfile)
         }
-        return NextResponse.json(updatedProfile)
+        return new NextResponse("Webhook received")
     } catch (error) {
+        console.log("[WEBHOOKS]", error);
         return new NextResponse("Internal Error", { status: 500 });
     }
 }
