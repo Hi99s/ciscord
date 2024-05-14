@@ -66,7 +66,7 @@ export const ChatItem = ({
         if (member.id === currentMember.id) {
             return;
         }
-
+        // 重定向到私聊
         router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
     };
 
