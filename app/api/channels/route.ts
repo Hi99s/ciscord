@@ -28,7 +28,7 @@ export async function POST(
         }
 
         // 管理员和服务器主持人可以创建新频道
-        const server = await db.Server.update({
+        const server = await db.server.update({
             where: {
                 id: serverId,
                 members: {
