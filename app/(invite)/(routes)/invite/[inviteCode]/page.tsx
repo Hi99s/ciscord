@@ -38,7 +38,7 @@ const InviteCodePage = async ({
         return redirect(`/servers/${existingServer.id}`);
     };
 
-    // 更新服务器的邀请码
+    // 找到邀请码为invieCode的服务器 添加新成员
     const server = await db.server.update({
         where:{
             inviteCode: params.inviteCode
