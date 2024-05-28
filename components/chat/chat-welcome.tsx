@@ -21,7 +21,7 @@ export const ChatWelcome = ({
       </p>
       <p className="text-zinc-600 dark:text-zinc-400 text-sm">
         {type === "channel"
-          ? `#${name}的千里之行，始于这里。`
+          ? `这是#${name}频道的顶部。`
           : `你与${name}的对话开始了。`
         }
       </p>
